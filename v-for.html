@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+    <script>
+        window.onload = function () {
+            var vm = new Vue({
+                el: "#itany",
+                data: {
+                    aar:[12,33,332,23,12],
+                    user:{"id":988,"name":"fdffd"},
+                    users:[
+                        {"id":988,"name":"搪玻璃"},
+                        {"id":988,"name":"范德萨"},
+                        {"id":988,"name":"你还能还"}
+                    ]
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<div id="itany">
+    <!--普通循环-->
+    <!--数组-->
+    <ul->
+        <li v-for="value in aar">{{value}}</li>
+    </ul->
+    <br>
+    <ul->
+        <!--绑定key，可以重用元素，提高渲染时的效率-->
+        <li v-for="(v,k) in aar" :key="k">{{k}}={{v}}</li>
+    </ul->
+    <br>
+    <!--对象-->
+    <ul->
+        <li v-for="value in user">{{value}}</li>
+    </ul->
+    <br>
+    <ul->
+        <li v-for="(user,index) in users">
+            {{index}},{{user.id}},{{user.name}}
+        </li>
+    </ul->
+</div>
+</body>
+</html>

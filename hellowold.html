@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+    <script>
+        window.onload = function () {
+            //配置是否允许vue-devtools检查代码，方便调试，生产环境中需要设置为false
+            Vue.config.devtools = true;
+            //阻止vue启动时生成生产消息
+            Vue.config.productionTip = true;
+
+            var vm = new Vue({
+                //指定关联的元素,2.0开始不能挂载在html和body元素上
+                el: "#itany",
+                //存储数据
+                data: {
+                    msg: "hello world"//如果需要引用，必须先声明
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<div id="itany">
+    <!-- 两对大括号{{}}称为模板，用来进行数据的绑定显示在页面中 -->
+    {{msg}}
+</div>
+</body>
+</html>

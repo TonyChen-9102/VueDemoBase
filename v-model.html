@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+    <script>
+        window.onload = function () {
+            var vm = new Vue({
+                el: "#itany",
+                data: {
+                    name: "4444",
+                    age: 21,
+                    flag: true,
+                    nums: [12, 2, 3,],
+                    user: {"id": 887, "name": "fdfd"},
+                    msg: "111111",
+                    msg2: "<mark>22222</mark>",
+                },
+                created: function () {
+                    //阻塞，测试v-cloak
+                    // alert(1);
+                }
+            });
+        }
+    </script>
+    <style>
+        /* 必须配置css样式，否则不生效 */
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="itany">
+    用户名：<input type="text" v-model="name">
+    <br>
+    {{name}}<br>
+    {{age}}<br>
+    {{flag}}<br>
+    {{nums}}<br>
+    {{user}}<br>
+
+    <!--隐藏未编译的 Mustache 标签直到实例准备完毕-->
+    <h3>aaa<span v-cloak>{{msg}}</span></h3>
+
+    <!--v-text-->
+    <h3 v-text="msg2"></h3>
+
+    <!--v-html 可以识别html-->
+    <h3 v-html="msg2"></h3>
+
+    <!--v-once 只会绑定一次-->
+    <p v-once>{{name}}</p>
+
+    <!--v-pre 不编译，直接原样显示-->
+    <p v-pre>{{name}}</p>
+</div>
+</body>
+</html>

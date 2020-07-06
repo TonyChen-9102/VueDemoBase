@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过滤器</title>
+    <script src="js/vue.js"></script>
+    <script>
+        //自定义全局过滤器
+        Vue.filter("addZero", function (data) {
+            return data < 10 ? "0" + data : data;
+        });
+        Vue.filter("number1", (data, n) => {
+            return data.toFixed(n);
+        });
+
+
+        window.onload = function () {
+            var vm = new Vue({
+                el: "#itany",
+                data: {
+                    arr: [12, 34, 32]
+                },
+                filters: {
+                    number2: (data, n) => {
+                        return data.toFixed(n);
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<div id="itany">
+    <h3>{{3|addZero}}</h3>
+    <h3>{{1.2345|number1(2)}}</h3>
+    <h3>{{2.3456|number2(2)}}</h3>
+</div>
+</body>
+</html>

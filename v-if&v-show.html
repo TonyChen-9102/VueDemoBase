@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-show & v-if</title>
+    <script src="js/vue.js"></script>
+    <script>
+        window.onload = function () {
+            var vm = new Vue({
+                el: "#itany",
+                data: {
+                    flag: true
+                },
+                methods: {
+                    change() {
+                        this.flag = !this.flag;
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<div id="itany">
+    <button v-on:click="change">显示/隐藏</button>
+    <button v-on:click="flag = !flag">显示/隐藏2</button>
+    <!--通过display实现-->
+    <div style="width: 100px;height: 100px;background-color: red" v-show="flag">欢迎你</div>
+    <!--删除后再重新创建-->
+    <div style="width: 100px;height: 100px;background-color: red" v-if="flag">欢迎你2</div>
+</div>
+</body>
+</html>

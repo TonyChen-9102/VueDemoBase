@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+    <script src="js/vue.js"></script>
+    <script>
+        //自定义按键
+        Vue.config.keyCodes={
+            a:65
+        }
+
+        window.onload = function () {
+            var vm = new Vue({
+                el: "#itany",
+                data: {
+                },
+                methods:{
+                    show(){
+                        console.log("show");
+                    },
+                    showEvent(event){
+                        console.log(event.target.innerHTML);
+                    },
+                    print1(){
+                        console.log("print1");
+                    },
+                    print2(event){
+                        event.stopPropagation();
+                        console.log("print2");
+                    },
+                    print3(){
+                        console.log("print3");
+                    },
+                    print4(){
+                        console.log("print4");
+                    },
+                    show1(){
+                        console.log("show1");
+                    },
+                    show2(event){
+                        event.preventDefault();
+                        console.log("show2");
+                    },
+                    show3(){
+                        console.log("show3");
+                    },
+                    showKey(event){
+                        console.log(event.code);
+                    },
+                    showKey(){
+                        console.log("showKey");
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<div id="itany">
+    <!--v-on:click 简写-->
+    <button @click="show()">简写</button>
+    <!--$event-->
+    <button @click="showEvent($event)">event</button>
+
+    <!--阻止冒泡-->
+    <div @click="print4">
+        <button @click="print1()">冒泡</button>
+        <!--js方式-->
+        <button @click="print2($event)">阻止冒泡JS</button>
+        <!--vue方式-->
+        <button @click.stop="print3()">阻止冒泡Vue</button>
+    </div>
+
+    <!--阻止默认修饰符-->
+    <a href="#" @click="show1($event)">不阻止修饰符</a>
+    <!--js方式-->
+    <a href="#" @click="show2($event)">阻止修饰符JS</a>
+    <!--vue方式-->
+    <a href="#" @click.prevent="show3()">阻止修饰符Vue</a>
+
+    <br>
+    <!--键盘事件-->
+    <!--@keydown、@keypress、@keyup-->
+    <input type="text" @keydown="showKey($event)">
+    <!--系统定义按键-->
+    <input type="text" @keydown.enter="showKey()">
+    <input type="text" @keydown.a="showKey()">
+</div>
+</body>
+</html>

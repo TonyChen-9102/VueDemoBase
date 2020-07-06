@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on</title>
+    <script src="js/vue.js"></script>
+    <script>
+        window.onload = function () {
+            var vm = new Vue({
+                el: "#itany",
+                data: {
+                    arr:[12,34,32]
+                },
+                methods:{
+                    show:function () {
+                        console.log("show");
+                    },
+                    add(){
+                        //this就是这个Vue实例
+                        this.arr.push(77);
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<div id="itany">
+    <button v-on:click="show()">点我</button>
+    <!--没有入参可以不加括号-->
+    <button v-on:click="add">添加数组</button>
+    {{arr}}
+</div>
+</body>
+</html>
